@@ -12,4 +12,4 @@ node '10.15.1'
 $ git clone git@github.com:tsubasa1122/todoapp-front.git
 $ cd todoapp-front
 $ yarn start
-``` 
+```
