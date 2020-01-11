@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { routerMiddleware } from 'react-router-redux';
+
 import routerReducer from './reducers/index';
 import rootSaga from './sagas/index';
 
