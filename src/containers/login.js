@@ -1,14 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LoginForm from '../components/login-form';
+import FormTitle from '../components/form-title';
 import { loginRequest } from '../actions';
+
+import styled from 'styled-components';
 
 class Login extends React.Component {
   render() {
     return (
-      <section>
+      <Section>
+        <FormTitle />
         <LoginForm dispatchRequest={this.props.dispatchRequest} />
-      </section>
+      </Section>
     );
   }
 }
@@ -21,3 +25,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+const Section = styled.section`
+  margin: 0 auto;
+  width: 640px;
+  padding-top: 180px;
+`;
