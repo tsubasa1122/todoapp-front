@@ -1,7 +1,7 @@
 const BASE_URL = 'http://localhost:3000';
 
 function api(data) {
-  return fetch(`${BASE_URL}api/auth/sign_in`, {
+  return fetch(`${BASE_URL}/api/auth/sign_in`, {
     method: 'post',
     mode: 'cors',
     headers: {
