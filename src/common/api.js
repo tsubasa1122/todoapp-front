@@ -1,13 +1,16 @@
 const BASE_URL = 'http://localhost:3000';
 
-function api(data) {
-  return fetch(`${BASE_URL}/api/auth/sign_in`, {
-    method: 'post',
+function api(path, method, data) {
+  let url = BASE_URL + path;
+  const headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json; charset=utf-8',
+  };
+
+  return fetch(url, {
+    method: method,
     mode: 'cors',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json; charset=utf-8',
-    },
+    headers,
     body: JSON.stringify(data),
   })
     .then(res => res.json())

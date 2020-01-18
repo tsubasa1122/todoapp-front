@@ -4,9 +4,9 @@ import { loginSuccess, loginFailure } from '../actions';
 
 function* handleRequest(action) {
   let { payload } = action;
-  payload = yield call(api, payload);
+  payload = yield call(api, '/api/auth/sign_in', 'POST', payload);
 
-  if (payload) {
+  if (payload && !payload.errors) {
     yield put(loginSuccess(payload));
   } else {
     yield put(loginFailure(payload));
