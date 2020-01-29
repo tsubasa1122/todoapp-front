@@ -14,6 +14,7 @@ function api(path, method, data) {
     body: JSON.stringify(data),
   })
     .then(res => res.json())
+    .then(res => res.headers.get('client'))
     .catch(error => ({ error }));
 }
 
