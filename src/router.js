@@ -11,8 +11,8 @@ import reducer from './reducers/index';
 import rootSaga from './sagas/index';
 
 import Login from './containers/login';
-// import Auth from './containers/Auth';
-// import Home from './containers/Home';
+import Tasks from './containers/Tasks';
+import NewTask from './containers/NewTask';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const history = createBrowserHistory();
@@ -36,9 +36,8 @@ export function Router() {
       <ConnectedRouter history={history}>
         <Switch>
           <Route exact path="/login" component={Login} />
-          {/* <Auth>
-            <Route path="/" component={Home} />
-          </Auth> */}
+          <Route exact path="/" component={Tasks} />
+          <Route exact path="/tasks/new" component={NewTask} />
         </Switch>
       </ConnectedRouter>
     </Provider>
