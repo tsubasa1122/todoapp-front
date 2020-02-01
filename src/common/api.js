@@ -1,6 +1,6 @@
 const BASE_URL = 'http://localhost:3000';
 
-function api(path, method, data) {
+function loginApi(path, method, data) {
   let url = BASE_URL + path;
   const headers = {
     Accept: 'application/json',
@@ -13,9 +13,14 @@ function api(path, method, data) {
     headers,
     body: JSON.stringify(data),
   })
-    .then(res => res.json())
-    .then(res => res.headers.get('client'))
+    .then(function(response) {
+      localStorage.setItem('client', response.headers.get('client'));
+      localStorage.setItem('uid', response.headers.get('uid'));
+      localStorage.setItem('access-token', response.headers.get('access-token'));
+      const json = response.json();
+      return json;
+    })
     .catch(error => ({ error }));
 }
 
-export default api;
+export default loginApi;
