@@ -1,27 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LoginForm from '../components/login-form';
-import FormTitle from '../components/form-title';
-import { loginRequest } from '../actions';
+import { tasksRequest } from '../actions';
 
 import styled from 'styled-components';
 
 class Tasks extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    this.props.getTasks();
+    console.log(this.props);
+  }
   render() {
-    return (
-      <Section>
-        <FormTitle />
-        <LoginForm dispatchRequest={this.props.dispatchRequest} />
-      </Section>
-    );
+    return <Section>{console.log(this.props)}</Section>;
   }
 }
 
 function mapStateToProps(state) {
-  return state.login;
+  return state.tasks;
 }
 function mapDispatchToProps(dispatch) {
-  return { dispatchRequest: loginForm => dispatch(loginRequest(loginForm)) };
+  return { getTasks: tasks => dispatch(tasksRequest(tasks)) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tasks);

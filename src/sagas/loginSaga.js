@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import loginApi from '../common/api';
+import loginApi from '../common/auth_api';
 import { loginSuccess, loginFailure } from '../actions';
 import { routerActions } from 'react-router-redux';
 

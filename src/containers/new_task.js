@@ -1,19 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LoginForm from '../components/login-form';
-import FormTitle from '../components/form-title';
 import { loginRequest } from '../actions';
 
 import styled from 'styled-components';
 
 class NewTask extends React.Component {
   render() {
-    return (
-      <Section>
-        <FormTitle />
-        <LoginForm dispatchRequest={this.props.dispatchRequest} />
-      </Section>
-    );
+    return <Section></Section>;
   }
 }
 
