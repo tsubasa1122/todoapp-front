@@ -4,8 +4,6 @@ import { getTasks, failTasks } from '../actions';
 
 function* tasksHandleRequest(action) {
   let { payload } = action;
-  console.log(1);
-  console.log(action);
   payload = yield call(api, '/api/tasks', 'GET');
 
   if (payload) {

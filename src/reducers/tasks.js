@@ -1,11 +1,9 @@
 const initialState = {};
 export default function tasks(state = initialState, action) {
-  console.log(2);
-  console.log(action.type);
   switch (action.type) {
     case 'GET_TASKS':
       state = action.payload;
-      return state;
+      return state.data;
     case 'FAIL_TASKS':
       state = action.payload;
       return state;
