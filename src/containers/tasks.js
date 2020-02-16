@@ -6,7 +6,7 @@ function mapStateToProps(state) {
   return state.tasks;
 }
 function mapDispatchToProps(dispatch) {
-  return { getTasks: tasks => dispatch(tasksRequest(tasks)) };
+  return { getTasks: () => dispatch(tasksRequest()) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tasks);

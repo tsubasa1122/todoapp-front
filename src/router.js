@@ -12,7 +12,7 @@ import rootSaga from './sagas/index';
 
 import Login from './containers/login';
 import Tasks from './containers/tasks';
-// import NewTask from './containers/NewTask';
+import NewTask from './containers/new_task';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const history = createBrowserHistory();
@@ -37,7 +37,7 @@ export function Router() {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/" component={Tasks} />
-          {/* <Route exact path="/tasks/new" component={NewTask} /> */}
+          <Route exact path="/tasks/new" component={NewTask} />
         </Switch>
       </ConnectedRouter>
     </Provider>
