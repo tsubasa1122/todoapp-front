@@ -7,7 +7,9 @@ function api(path, method, data) {
     'Content-Type': 'application/json; charset=utf-8',
     client: localStorage.getItem('client'),
     uid: localStorage.getItem('uid'),
+    expiry: localStorage.getItem('expiry'),
     'access-token': localStorage.getItem('access-token'),
+    'token-type': 'Bearer',
   };
 
   return fetch(url, {

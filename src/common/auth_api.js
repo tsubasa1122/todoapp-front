@@ -17,6 +17,7 @@ function loginApi(path, method, data) {
       localStorage.setItem('client', response.headers.get('client'));
       localStorage.setItem('uid', response.headers.get('uid'));
       localStorage.setItem('access-token', response.headers.get('access-token'));
+      localStorage.setItem('expiry', response.headers.get('expiry'));
       const json = response.json();
       return json;
     })

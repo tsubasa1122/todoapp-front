@@ -5,7 +5,7 @@ import { routerActions } from 'react-router-redux';
 
 function* handleRequest(action) {
   let { payload } = action;
-  payload = yield call(loginApi, '/api/auth/sign_in', 'POST', payload);
+  payload = yield call(loginApi, '/auth/sign_in', 'POST', payload);
 
   if (payload) {
     yield put(loginSuccess(payload));
