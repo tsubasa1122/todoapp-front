@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import NewTask from '../components/new_task';
+import { createTaskRequest } from '../actions';
 
 function mapStateToProps(state) {
-  return null;
+  return state.createTask;
 }
-function mapDispatchToProps(dispatch) {
-  return null;
-}
+const mapDispatchToProps = dispatch => ({
+  dispatchTaskRequest: taskForm => dispatch(createTaskRequest(taskForm)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewTask);

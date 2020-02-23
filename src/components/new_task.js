@@ -6,18 +6,51 @@ import HeaderTitle from './header_title';
 class NewTask extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       taskForm: {
         title: '',
         content: '',
         expires_at: '',
-        tag: [],
+        tags_attributes: {
+          name: '',
+        },
       },
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    let taskForm = this.state.taskForm;
+    switch (event.target.name) {
+      case 'task[title]':
+        taskForm.title = event.target.value;
+        break;
+      case 'task[content]':
+        taskForm.content = event.target.value;
+        break;
+      case 'task[expires_at]':
+        taskForm.expires_at = event.target.value;
+        break;
+      case 'task[name]':
+        taskForm.tags_attributes.name = event.target.value;
+        break;
+      default:
+        break;
+    }
+    this.setState({
+      taskForm: taskForm,
+    });
+  }
+
+  componentDidMount() {
+    let taskForm = this.state.taskForm;
+    this.setState({
+      taskForm: taskForm,
+    });
   }
 
   render() {
+    const { dispatchTaskRequest } = this.props;
     return (
       <Container>
         <HeaderTitle title={'タスクの登録'} />
@@ -55,7 +88,7 @@ class NewTask extends React.Component {
             <Label>タグ</Label>
             <InputTag
               type="text"
-              name="task[title]"
+              name="task[name]"
               placeholder="Ruby"
               value={this.state.taskForm.tag}
               onChange={this.handleChange}
@@ -63,7 +96,7 @@ class NewTask extends React.Component {
           </Fieldset>
           <ButtonInner>
             <BackTaskList to="/">タスク一覧へ戻る</BackTaskList>
-            <Button type="button" disabled={false}>
+            <Button type="button" disabled={false} onClick={e => dispatchTaskRequest(this.state.taskForm)}>
               登録
             </Button>
           </ButtonInner>
@@ -100,6 +133,7 @@ const Label = styled.label`
 
 const InputTitle = styled.input`
   background-color: #323849;
+  color: #ffffff;
   border-radius: 4px;
   margin-left: 112px;
   width: 403px;
@@ -111,6 +145,7 @@ const InputTitle = styled.input`
 
 const InputContent = styled.textarea`
   background-color: #323849;
+  color: #ffffff;
   margin-left: 140px;
   width: 670px;
   height: 186px;
@@ -122,11 +157,13 @@ const InputContent = styled.textarea`
 const InputExpires = styled(InputTitle)`
   margin-left: 140px;
   width: 151px;
+  color: #ffffff;
 `;
 
 const InputTag = styled(InputTitle)`
   margin-left: 137px;
   width: 131px;
+  color: #ffffff;
 `;
 
 const ButtonInner = styled.div`

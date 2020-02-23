@@ -12,7 +12,7 @@ class Tasks extends React.Component {
     this.props.getTasks();
   }
   render() {
-    const { tasks } = this.props;
+    const { tasks, dispatchTaskFinishRequest } = this.props;
     return (
       <Container>
         <HeaderTitle title={'タスク一覧'} />
@@ -21,12 +21,12 @@ class Tasks extends React.Component {
         </NavContainer>
         <TaskContainer>
           {tasks.map(task => (
-            <TaskBox>
+            <TaskBox key={task.id}>
               <TaskBoxContent>
                 <TaskTitle>{task.title}</TaskTitle>
                 <TaskContent>{task.content}</TaskContent>
                 <TaskExpires>{task.expires_at}</TaskExpires>
-                <TaskCompleteButton>完了</TaskCompleteButton>
+                <TaskCompleteButton onClick={() => dispatchTaskFinishRequest(task.id)}>完了</TaskCompleteButton>
               </TaskBoxContent>
             </TaskBox>
           ))}

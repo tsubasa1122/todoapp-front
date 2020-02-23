@@ -9,6 +9,14 @@ export default function tasks(state = initialState, action) {
     case 'FAIL_TASKS':
       state = action.payload;
       return state;
+    case 'FINISH_TASK_SUCCESS':
+      return {
+        ...state,
+        tasks: state.tasks,
+      };
+    case 'FINISH_TASK_FAILURE':
+      state = action.payload;
+      return state;
     default:
       return initialState;
   }
